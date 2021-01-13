@@ -15,7 +15,7 @@ envc = os.environ.copy()
 def install(cache, packageName):
     pkg = cache[packageName]
     if pkg.is_installed:
-        print(f"{packageName} is already installed !!")
+        print(f"{packageName} is already installed !")
     else:
         print(f"Installing {packageName} ...")
         pkg.mark_install()
@@ -82,7 +82,7 @@ def config_xorg():
 
 def config_i3():
     os.makedirs('/root/.config/i3/', exist_ok=True)
-    shutil.move("./i3.config", "/root/.config/i3/config")
+    shutil.move("./i3.conf", "/root/.config/i3/config")
 
 
 def config():
