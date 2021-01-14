@@ -32,7 +32,8 @@ def installer(packages):
 
 
 def installPackages():
-    packages = ["xvfb",
+    packages = ["ffmpeg",
+                "xvfb",
                 "xserver-xorg",
                 "mesa-utils",
                 "xinit",
@@ -106,9 +107,9 @@ def streamer(streamSecret, streamURL):
     return (xorg, i3, ffmpeg)
 
 
-def twitchStreamer(streamSecret, rtmpServer="rtmp://live.twitch.tv/app/"):
+def twitchStreamer(streamSecret, rtmpServer='rtmp://live.twitch.tv/app/'):
     return streamer(streamSecret, rtmpServer)
 
 
-def youtubeStreamer(streamSecret, rtmpServer="rtmp://a.rtmp.youtube.com/live2/"):
+def youtubeStreamer(streamSecret, rtmpServer='rtmp://a.rtmp.youtube.com/live2/'):
     return streamer(streamSecret, rtmpServer)
