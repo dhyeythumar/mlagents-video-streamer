@@ -1,7 +1,7 @@
 # Video Streamer
 
 <h4 align="center">
-    Live stream the training process of Reinforcement Learning using the virtual screen from Google Colaboratory to Twitch.
+    Live stream the training process of Reinforcement Learning using the virtual screen from Google Colab to Twitch.
 </h4>
 
 ## Setup Instructions

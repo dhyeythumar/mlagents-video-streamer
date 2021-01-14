@@ -110,6 +110,6 @@ def streamer(streamSecret, streamURL):
 def twitchStreamer(streamSecret, rtmpServer='rtmp://live.twitch.tv/app/'):
     return streamer(streamSecret, rtmpServer)
 
-
+# TODO :: Why this is not working ?
 def youtubeStreamer(streamSecret, rtmpServer='rtmp://a.rtmp.youtube.com/live2/'):
     return streamer(streamSecret, rtmpServer)
