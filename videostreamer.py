@@ -82,7 +82,7 @@ def config_xorg():
 
 def config_i3():
     os.makedirs('/root/.config/i3/', exist_ok=True)
-    shutil.move("./i3.conf", "/root/.config/i3/config")
+    shutil.move("./video-streamer/i3.conf", "/root/.config/i3/config")
 
 
 def config():
