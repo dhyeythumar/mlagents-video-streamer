@@ -41,7 +41,7 @@ def installPackages():
                 "linux-generic",
                 "xterm",
                 "htop",
-                "i3",
+                # "i3",
                 "xloadimage",
                 "libgtk2.0-0",
                 "libgconf-2-4"]
@@ -68,7 +68,7 @@ def config_xorg():
                     "-a",
                     "--allow-empty-initial-configuration",
                     "--virtual=1920x1080",
-                    "--busid", "PCI:0:4:0"],
+                    "--busid", "PCI:0000:00:04.0"],
                    check=True)
 
     with open("/etc/X11/xorg.conf", "r+") as f:
@@ -91,20 +91,22 @@ def config():
     print("Installed all the required packages.")
     config_xorg()
     print("xorg setup is done.")
-    config_i3()
-    print("i3 setup is done.")
+    # config_i3()
+    # print("i3 setup is done.")
 
 
+# Capturing video with constant bitrate of 6Mbps & framerate of 60 fps
 def streamer(streamSecret, streamURL):
     xorg = subprocess.Popen(
         ["Xorg", "-seat", "seat-1", "-allowMouseOpenFail", "-novtswitch", "-nolisten", "tcp"])
-    i3 = subprocess.Popen("i3", env=envc, shell=True)
+    # i3 = subprocess.Popen("i3", env=envc, shell=True)
     ffmpeg = subprocess.Popen(["ffmpeg", "-threads:v", "2", "-threads:a", "8", "-filter_threads", "2", "-thread_queue_size",
-                               "512", "-f", "x11grab", "-s", "1920x1080", "-framerate", "30", "-i", ":0.0", "-b:v", "2400k",
-                               "-minrate:v", "2400k", "-maxrate:v", "2400k", "-bufsize:v", "2400k", "-c:v", "h264_nvenc",
+                               "512", "-f", "x11grab", "-s", "1920x1080", "-framerate", "60", "-i", ":0.0", "-b:v", "6000k",
+                               "-minrate:v", "6000k", "-maxrate:v", "6000k", "-bufsize:v", "6000k", "-c:v", "h264_nvenc",
                                "-qp:v", "19", "-profile:v", "high", "-rc:v", "cbr_ld_hq", "-r:v", "60", "-g:v", "120",
                                "-bf:v", "3", "-refs:v", "16", "-f", "flv", streamURL + streamSecret])
-    return (xorg, i3, ffmpeg)
+    # return (xorg, i3, ffmpeg)
+    return (xorg, ffmpeg)
 
 
 def twitchStreamer(streamSecret, rtmpServer='rtmp://live.twitch.tv/app/'):
