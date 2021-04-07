@@ -41,7 +41,6 @@ def installPackages():
                 "linux-generic",
                 "xterm",
                 "htop",
-                # "i3",
                 "xloadimage",
                 "libgtk2.0-0",
                 "libgconf-2-4"]
@@ -59,7 +58,7 @@ def download(url, path):
 
 
 def config_xorg():
-    download("http://us.download.nvidia.com/tesla/418.67/NVIDIA-Linux-x86_64-418.67.run", "nvidia.run")
+    download("http://us.download.nvidia.com/tesla/460.32.03/NVIDIA-Linux-x86_64-460.32.03.run", "nvidia.run")
     pathlib.Path("nvidia.run").chmod(stat.S_IXUSR)
     subprocess.run(["./nvidia.run", "--no-kernel-module", "--ui=none"],
                    input="1\n", check=True, universal_newlines=True)
@@ -68,7 +67,7 @@ def config_xorg():
                     "-a",
                     "--allow-empty-initial-configuration",
                     "--virtual=1920x1080",
-                    "--busid", "PCI:0000:00:04.0"],
+                    "--busid", "PCI:0:4:0"],
                    check=True)
 
     with open("/etc/X11/xorg.conf", "r+") as f:
@@ -81,31 +80,22 @@ def config_xorg():
         f.write(conf)
 
 
-def config_i3():
-    os.makedirs('/root/.config/i3/', exist_ok=True)
-    shutil.move("./video-streamer/i3.conf", "/root/.config/i3/config")
-
-
 def config():
     installPackages()
     print("Installed all the required packages.")
     config_xorg()
     print("xorg setup is done.")
-    # config_i3()
-    # print("i3 setup is done.")
 
 
 # Capturing video with constant bitrate of 6Mbps & framerate of 60 fps
 def streamer(streamSecret, streamURL):
     xorg = subprocess.Popen(
         ["Xorg", "-seat", "seat-1", "-allowMouseOpenFail", "-novtswitch", "-nolisten", "tcp"])
-    # i3 = subprocess.Popen("i3", env=envc, shell=True)
     ffmpeg = subprocess.Popen(["ffmpeg", "-threads:v", "2", "-threads:a", "8", "-filter_threads", "2", "-thread_queue_size",
                                "512", "-f", "x11grab", "-s", "1920x1080", "-framerate", "60", "-i", ":0.0", "-b:v", "6000k",
                                "-minrate:v", "6000k", "-maxrate:v", "6000k", "-bufsize:v", "6000k", "-c:v", "h264_nvenc",
                                "-qp:v", "19", "-profile:v", "high", "-rc:v", "cbr_ld_hq", "-r:v", "60", "-g:v", "120",
                                "-bf:v", "3", "-refs:v", "16", "-f", "flv", streamURL + streamSecret])
-    # return (xorg, i3, ffmpeg)
     return (xorg, ffmpeg)
 
 
