@@ -1,7 +1,7 @@
 # Video Streamer
 
 <h4 align="center">
-    Live stream the training process of Reinforcement Learning using the virtual screen from Google Colab to Twitch.
+    Live stream the training process of ML-Agents (toolkit for Reinforcement Learning with Unity Engine) using the virtual screen from Google Colab to Twitch.
 </h4>
 
 ## Setup Instructions
@@ -23,7 +23,7 @@ videostreamer.config()
 3. Activate the twitch streamer.
 
 ```python
-xorg, i3, ffmpeg = videostreamer.twitchStreamer('<your-twitch-secret-key>')
+xorg, ffmpeg = videostreamer.twitchStreamer('<your-twitch-secret-key>')
 ```
 
 4. To capture the running process, use the subprocess library.
