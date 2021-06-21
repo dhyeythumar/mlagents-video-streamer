@@ -65,8 +65,8 @@ class Streamer(object):
             "-r:v", "60",
 
             # "-qp:v", "19",
-            "-profile:v", "high",
             # "-g:v", "120",
+            "-profile:v", "high",
             "-bf:v", "3",  # lower CRF values correspond to higher bitrates,
             "-refs:v", "16",  # reference frames to consider for motion compensation
             "-f", "flv",

@@ -8,7 +8,6 @@ import re
 import os
 
 os.environ['DISPLAY'] = ":0"
-# envc = os.environ.copy()
 
 def download(url, path):
     try:
