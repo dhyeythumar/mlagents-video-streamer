@@ -9,12 +9,13 @@
 <div align="center">
     <p>Try Google Colab Notebook</p>
     <p>
-        <a href="https://colab.research.google.com/github/dhyeythumar/mlagents-video-streamer/blob/v1.0.0/Streaming ML-Agents from Colab -v1.x.x.ipynb">
+        <a href="https://colab.research.google.com/github/dhyeythumar/mlagents-video-streamer/blob/v1.0/Streaming ML-Agents from Colab -v1.0.ipynb">
           <img alt="colab link" src="https://colab.research.google.com/assets/colab-badge.svg" />
         </a>
     </p>
 </div>
 
+---
 
 ## Installation
 
