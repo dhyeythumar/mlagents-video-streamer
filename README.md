@@ -4,97 +4,22 @@
 Now you can Live Stream the Agent's learning behavior to Twitch/YouTube from Google Colab while training these Agents.
 </h4>
 
----
+## Releases & Documentation
 
-<div align="center">
-    <p>Try Google Colab Notebook</p>
-    <p>
-        <a href="https://colab.research.google.com/github/dhyeythumar/mlagents-video-streamer/blob/v2.0/Streaming ML-Agents from Colab -v2.0.ipynb">
-          <img alt="colab link" src="https://colab.research.google.com/assets/colab-badge.svg" />
-        </a>
-    </p>
-</div>
+**Latest, stable release is `v2.0`. Click
+[here](https://github.com/dhyeythumar/mlagents-video-streamer/blob/v2.0/README.md) to get started with the latest release of ML-Agents Video Streamer.**
 
----
+-   The [Releases page](https://github.com/dhyeythumar/mlagents-video-streamer/releases) contains details of the changes between releases.
+-   The [Migration page](./Migrating.md) contains details on how to upgrade
+    from earlier releases of the ML-Agents Toolkit.
+-   The **Documentation** links in the table below include installation and usage instructions specific to each release. Remember to always use the
+    documentation that corresponds to the release version you're using.
 
-## What’s In This Document
-
--   [Installation](#installation)
--   [Imports and Usage](#imports-and-usage)
--   [License](#license)
-
-## Installation
-
-```bash
-!pip install mlagents-video-streamer
-```
-
-And if you already have `mlagents-video-streamer` then upgrade it by this command.
-
-```bash
-!pip install --upgrade mlagents-video-streamer
-```
-
-## Imports and Usage
-
-```python
-from mlagents_video_streamer import SetupVirtualDisplay
-from mlagents_video_streamer import VideoStreamer
-```
-
--   Now Setup the Virtual Display:
-
-    ```python
-    SetupVirtualDisplay()
-    ```
-
--   Define your live stream information:
-
-    ```python
-    # stream_info dictionary should be in this format only
-    stream_info = {
-        "URL": "rtmp://live.twitch.tv/app/", # example of Twitch URL
-        "secret": "--- secret here ---"
-    }
-    ```
-
--   Initialize the `VideoStreamer` class with `stream_info`:
-
-    ```python
-    videoStreamer = VideoStreamer(stream_info)
-    ```
-
-    \*_If you don't pass `stream_info` then it will simply store the video locally in the `videos` directory._
-
--   Start the video streamer before starting with the training process:
-
-    ```python
-    videoStreamer.start()
-    ```
-
--   Now capture the training process, using subprocess library:
-
-    ```python
-    import subprocess
-    from random import randrange
-
-    try:
-        train = subprocess.run([
-            "mlagents-learn", 
-            "config.yaml",
-            "--run-id=train-1",
-            "--env=3DBall_example/3DBall.x86_64",
-            "--base-port=" + str(randrange(9000, 9999))
-        ],
-            cwd="/content/", stdout=subprocess.PIPE)
-        print("Training process has been successfully ended.")
-    except Exception as e:
-        print("You killed the training process in between.")
-    finally:
-        videoStreamer.close()
-    ```
-
-    \*_At the end don't forget to close the video streamer by using `close()` method on `videoStreamer` object as shown in the above example._
+|     **Version**     | **Release Date** |                                 **Source**                                 |                                    **Readme**                                     |                                                        **Migration Details**                                                        |
+| :-----------------: | :--------------: | :------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: |
+| **main (unstable)** |        --        | [source](https://github.com/dhyeythumar/mlagents-video-streamer/tree/main) | [doc](https://github.com/dhyeythumar/mlagents-video-streamer/tree/main/README.md) |                                                                 --                                                                  |
+|      **v2.0**       |  June 21, 2021   | [source](https://github.com/dhyeythumar/mlagents-video-streamer/tree/v2.0) | [doc](https://github.com/dhyeythumar/mlagents-video-streamer/tree/v2.0/README.md) | [v1.0 to v2.0](https://github.com/dhyeythumar/mlagents-video-streamer/blob/main/Migrating.md#migrating-the-package-from-v10-to-v20) |
+|      **v1.0**       | January 13, 2021 | [source](https://github.com/dhyeythumar/mlagents-video-streamer/tree/v1.0) | [doc](https://github.com/dhyeythumar/mlagents-video-streamer/tree/v1.0/README.md) |                                                                 --                                                                  |
 
 ## License
 
