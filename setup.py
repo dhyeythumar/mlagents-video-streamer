@@ -16,7 +16,7 @@ else:
 
 setup(
     name="mlagents-video-streamer",
-    version="1.0.2",
+    version="1.0",
     author="Dhyey Thumar",
     author_email="dhyeythumar@gmail.com",
     py_modules=['videostreamer'],
