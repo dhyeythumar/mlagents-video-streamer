@@ -41,9 +41,11 @@ class Streamer(object):
 
         self.cmdline = [
             self.backend,
-            "-threads:v", "2",
-            "-threads:a", "8",
-            "-filter_threads", "2",
+            "-nostats",
+            "-loglevel", "error",  # suppress warnings
+            '-y',
+            "-threads:v", "4",
+            "-filter_threads", "4",
             "-thread_queue_size", "512",
 
             # input
@@ -62,9 +64,9 @@ class Streamer(object):
             "-rc:v", "cbr_ld_hq",
             "-r:v", "60",
 
-            "-qp:v", "19",
+            # "-qp:v", "19",
             "-profile:v", "high",
-            "-g:v", "120",
+            # "-g:v", "120",
             "-bf:v", "3",  # lower CRF values correspond to higher bitrates,
             "-refs:v", "16",  # reference frames to consider for motion compensation
             "-f", "flv",

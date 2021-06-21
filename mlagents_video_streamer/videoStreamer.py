@@ -28,6 +28,7 @@ class VideoStreamer(object):
         if self.enabled is True:
             try:
                 self.Streamer.start()
+                printMsg("Video Streamer/Recorder started.")
             except Exception as e:
                 self.enabled = False
                 printMsg("Exception while starting streamer object.", e)
