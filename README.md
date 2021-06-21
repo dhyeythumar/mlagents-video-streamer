@@ -4,6 +4,18 @@
     Live stream the training process of ML-Agents (toolkit for Reinforcement Learning with Unity Engine) using the virtual screen from Google Colab to Twitch.
 </h4>
 
+---
+
+<div align="center">
+    <p>Try Google Colab Notebook</p>
+    <p>
+        <a href="https://colab.research.google.com/github/dhyeythumar/mlagents-video-streamer/blob/v1.0.0/Streaming ML-Agents from Colab -v1.x.x.ipynb">
+          <img alt="colab link" src="https://colab.research.google.com/assets/colab-badge.svg" />
+        </a>
+    </p>
+</div>
+
+
 ## Installation
 
 ```bash
