@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name="Video Streamer",
-    version="1.0",
+    name="mlagents-video-streamer",
+    version="1.0.0",
     py_modules=['videostreamer'],
     url="https://github.com/Dhyeythumar/video-streamer",
     author="Dhyey Thumar",

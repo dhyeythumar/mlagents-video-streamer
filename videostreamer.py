@@ -11,7 +11,6 @@ import os
 os.environ['DISPLAY'] = ":0"
 envc = os.environ.copy()
 
-
 def install(cache, packageName):
     pkg = cache[packageName]
     if pkg.is_installed:
