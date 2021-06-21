@@ -4,34 +4,32 @@
     Live stream the training process of ML-Agents (toolkit for Reinforcement Learning with Unity Engine) using the virtual screen from Google Colab to Twitch.
 </h4>
 
-## Setup Instructions
-
-1. Clone and Install the repo in Google Colab code cell.
+## Installation
 
 ```bash
-!git clone https://github.com/Dhyeythumar/video-streamer.git
-!pip install video-streamer/
+!pip install mlagents-video-streamer
 ```
 
-2. Configure the video streamer.
+-   Configure the video streamer.
 
-```python
-import videostreamer
-videostreamer.config()
-```
+    ```python
+    import videostreamer
+    videostreamer.config()
+    ```
 
-3. Activate the twitch streamer.
+-   Activate the twitch streamer.
 
-```python
-xorg, ffmpeg = videostreamer.twitchStreamer('<your-twitch-secret-key>')
-```
+    ```python
+    xorg, ffmpeg = videostreamer.twitchStreamer('<your-twitch-secret-key>')
+    ```
 
-4. To capture the running process, use the subprocess library.
+-   To capture the running process, use the subprocess library.
 
-The below example shows how to capture the training process in the case of ML-Agents:
-```python
-import subprocess
-from random import randrange
+    The below example shows how to capture the training process in the case of ML-Agents:
 
-train = subprocess.run(["mlagents-learn", "config.yaml", "--run-id=train-1", "--env=3DBall_example/3DBall.x86_64", "--base-port=" + str(randrange(9000, 9999))], cwd="/content/", stdout=subprocess.PIPE)
-```
+    ```python
+    import subprocess
+    from random import randrange
+
+    train = subprocess.run(["mlagents-learn", "config.yaml", "--run-id=train-1", "--env=3DBall_example/3DBall.x86_64", "--base-port=" + str(randrange(9000, 9999))], cwd="/content/", stdout=subprocess.PIPE)
+    ```
