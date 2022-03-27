@@ -1,10 +1,13 @@
-# ML-Agents Video Streamer
+<h2 align="center">ML-Agents Video Streamer</h2> 
 
 <h4 align="center">
 Now you can Live Stream the Agent's learning behavior to Twitch/YouTube from Google Colab while training these Agents.
 </h4>
 
----
+<p align="center">
+    <a href="https://dhyeythumar.medium.com/training-ml-agents-with-google-colab-live-streaming-to-twitch-5324a8dfa8ef"><img alt="medium-logo" src="https://img.shields.io/badge/Medium-Training%20ML--Agents%20...-191919?style=for-the-badge&logo=medium" /></a>
+    <a href="https://pypi.org/project/mlagents-video-streamer/"><img alt="pypi-logo" src="https://img.shields.io/badge/PyPI-mlagents--video--streamer%202.0-%23006dad?style=for-the-badge&logo=pypi" /></a>
+</p>
 
 ## Releases & Documentation
 
